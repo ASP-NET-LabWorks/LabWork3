@@ -52,10 +52,7 @@
                                 <a class="nav-link" runat="server" href="~/">Домашняя</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" runat="server" href="~/Sum">Сумма</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" runat="server" href="~/Contact">?</a>
+                                <a class="nav-link" runat="server" href="~/Sum">Сумма чисел</a>
                             </li>
                         </ul>
                     </div>

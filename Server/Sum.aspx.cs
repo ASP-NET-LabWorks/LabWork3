@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Server
 {
-    public partial class About : Page
+    public partial class Sum : Page
     {
         private static readonly HttpClient client = new HttpClient();
 
@@ -16,22 +13,30 @@ namespace Server
         {
             try
             {
-                var a = TextBoxA.Text;
-                var b = TextBoxB.Text;
+                var values = new Dictionary<string, string>
+                {
+                    ["x"] = TextBoxX.Text,
+                    ["y"] = TextBoxY.Text
+                };
 
-                HttpResponseMessage response;
-                    
-                response = await client.GetAsync($"https://localhost:44375/xxx.sum?a={a}&b={b}");
+                using (var content = new FormUrlEncodedContent(values))
+                {
 
-                var responseString = await response.Content.ReadAsStringAsync();
+                    HttpResponseMessage response;
 
-                LabelResult.Text = responseString;
+                    response = await client.PostAsync("http://localhost/LabWork3/xxx.sum", content);
+
+                    var responseString = await response.Content.ReadAsStringAsync();
+
+                    LabelResult.Text = responseString;
+                }
             }
             catch (Exception error)
             {
                 LabelResult.Text = error.Message;
             }
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

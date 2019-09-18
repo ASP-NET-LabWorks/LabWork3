@@ -8,12 +8,10 @@ public class SumHandler : IHttpHandler
     {
         try
         {
-            var sum = 0;
+            var x = int.Parse(context.Request.Params.Get("x"));
+            var y = int.Parse(context.Request.Params.Get("y"));
 
-            foreach (var key in context.Request.QueryString.AllKeys)
-                sum += int.Parse(context.Request.QueryString.Get(key));
-
-            context.Response.Write(sum.ToString());
+            context.Response.Write((x + y).ToString());
         }
         catch
         {

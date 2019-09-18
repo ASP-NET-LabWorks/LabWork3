@@ -10,7 +10,7 @@
 namespace Server {
     
     
-    public partial class Sum {
+    public partial class Error {
         
         /// <summary>
         /// UpdatePanel элемент управления.

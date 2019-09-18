@@ -9,7 +9,7 @@ namespace Server
     {
         private static readonly HttpClient client = new HttpClient();
 
-        private async System.Threading.Tasks.Task SendRequest(string method, string uri)
+        private async System.Threading.Tasks.Task SendRequest(string method)
         {
             try
             {
@@ -21,6 +21,8 @@ namespace Server
 
                 using (var content = new FormUrlEncodedContent(values))
                 {
+                    var uri = "http://localhost/LabWork3/xxx.azvm";
+
                     HttpResponseMessage response;
 
                     switch (method)
@@ -52,6 +54,7 @@ namespace Server
                 LabelResult.Text = error.Message;
             }
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -59,22 +62,22 @@ namespace Server
 
         protected async void ButtonGet_Click(object sender, EventArgs e)
         {
-            await SendRequest("GET", $"https://localhost:44375/xxx.azvm");
+            await SendRequest("GET");
         }
 
         protected async void ButtonPost_Click(object sender, EventArgs e)
         {
-            await SendRequest("POST", $"https://localhost:44375/xxx.azvm");
+            await SendRequest("POST");
         }
 
         protected async void ButtonPut_Click(object sender, EventArgs e)
         {
-            await SendRequest("PUT", $"https://localhost:44375/xxx.azvm");
+            await SendRequest("PUT");
         }
 
         protected async void Button404_Click(object sender, EventArgs e)
         {
-            await SendRequest("OPTIONS", $"https://localhost:44375/xxx.azvm");
+            await SendRequest("OPTIONS");
         }
     }
 }
