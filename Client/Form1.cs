@@ -27,10 +27,7 @@ namespace Client
 
                 using (var content = new FormUrlEncodedContent(values))
                 {
-
-                    HttpResponseMessage response;
-
-                    response = await client.PostAsync("http://localhost/LabWork3/xxx.sum", content);
+                    var response = await client.PostAsync("http://localhost/LabWork3/xxx.sum", content);
 
                     var responseString = await response.Content.ReadAsStringAsync();
 
